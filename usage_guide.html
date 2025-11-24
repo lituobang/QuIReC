@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用指引：研究贡献量化</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 引入 Inter 字体，并使用计算器页面的背景色 */
+        body {
+            font-family: 'Inter', 'Microsoft YaHei', 'SimHei', sans-serif;
+            background-color: #f7f7f7; 
+        }
+        /* 为卡片添加统一的视觉效果 */
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid #e5e7eb; /* gray-200 */
+        }
+        .card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-link.active {
+            background-color: #eef2ff; /* primary-light */
+        }
+    </style>
+    <script>
+        // 定义与计算器页面相同的自定义颜色
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1d4ed8', 
+                        'secondary': '#374151',
+                        'primary-light': '#eef2ff',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4">
+
+    <!-- 语言切换按钮 (固定在右上角) -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="lang-button" onclick="toggleLanguage()" class="p-3 bg-primary text-white rounded-full shadow-lg hover:bg-blue-800 transition duration-150 text-sm font-semibold">
+            <span data-lang-cn="Switch to English" data-lang-en="切换至中文">Switch to English</span>
+        </button>
+    </div>
+
+    <!-- 头部和导航栏 -->
+    <header class="w-full max-w-5xl mb-12">
+        <nav class="bg-white p-6 rounded-2xl shadow-xl flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 border-t-4 border-primary">
+            <h1 class="text-3xl font-extrabold text-primary tracking-tight" data-lang-cn="使用指引" data-lang-en="Usage Guide">使用指引</h1>
+            <!-- 响应式导航链接 -->
+            <div class="flex flex-wrap justify-center space-x-4">
+                <a href="index.html" class="nav-link text-secondary hover:text-primary font-medium transition duration-150 p-2 rounded-lg hover:bg-gray-100">
+                    <span data-lang-cn="主页" data-lang-en="Home">主页</span>
+                </a>
+                <a href="background.html" class="nav-link text-secondary hover:text-primary font-medium transition duration-150 p-2 rounded-lg hover:bg-gray-100">
+                    <span data-lang-cn="项目背景" data-lang-en="Project Background">项目背景</span>
+                </a>
+                <!-- 当前页面链接设置为 active 样式 -->
+                <a href="usage_guide.html" class="nav-link text-primary hover:text-blue-800 font-semibold transition duration-150 p-2 rounded-lg bg-primary-light active">
+                    <span data-lang-cn="使用指引" data-lang-en="Usage Guide">使用指引</span>
+                </a>
+                <a href="hierarchical_calculator.html" class="nav-link text-secondary hover:text-primary font-medium transition duration-150 p-2 rounded-lg hover:bg-gray-100">
+                    <span data-lang-cn="计算器" data-lang-en="Calculator">计算器</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域：使用指引详情 -->
+    <main class="w-full max-w-5xl space-y-12">
+
+        <!-- 目录 (Table of Contents) -->
+        <section id="table-of-contents" class="card bg-white p-6 rounded-2xl border-l-4 border-secondary/50">
+            <h2 class="text-2xl font-extrabold text-secondary mb-4" data-lang-cn="目录" data-lang-en="Table of Contents">目录</h2>
+            <nav class="text-blue-700 space-y-2">
+                <ul class="list-none p-0 space-y-1">
+                    <li><a href="#section-overview" class="hover:underline transition duration-100" data-lang-cn="1. 研究贡献的量化：QIRC/QuIReC 的提出背景" data-lang-en="1. Quantifying Research Contribution: The Context of QIRC/QuIReC">1. 研究贡献的量化：QIRC/QuIReC 的提出背景</a></li>
+                    <li><a href="#section-exaggeration" class="hover:underline transition duration-100" data-lang-cn="2. 夸大贡献的普遍性与量化的必要性" data-lang-en="2. Ubiquity of Contribution Exaggeration and the Need for Quantification">2. 夸大贡献的普遍性与量化的必要性</a></li>
+                    <li><a href="#section-check-rules" class="hover:underline transition duration-100" data-lang-cn="3. 核对现有披露规则 (第一步骤)" data-lang-en="3. Checking Existing Disclosure Rules (Step 1)">3. 核对现有披露规则 (第一步骤)</a></li>
+                    <li><a href="#section-combine-items" class="hover:underline transition duration-100" data-lang-cn="4. 合并现有贡献项目 (五大要素)" data-lang-en="4. Consolidating Existing Contribution Items (Five Major Factors)">4. 合并现有贡献项目 (五大要素)</a></li>
+                    <li><a href="#section-causality-sizing" class="hover:underline transition duration-100" data-lang-cn="5. 原因力大小的判定 (三因素考量)" data-lang-en="5. Determining the Magnitude of Causality (Three Factor Consideration)">5. 原因力大小的判定 (三因素考量)</a>
+                        <ul class="list-disc list-inside ml-6 mt-1 space-y-1 text-sm text-gray-600">
+                            <li><a href="#subsection-scarcity" class="hover:underline" data-lang-cn="5.1 稀缺性定档与计算方式" data-lang-en="5.1 Scarcity Tiering and Calculation Methods">5.1 稀缺性定档与计算方式</a></li>
+                            <li><a href="#subsection-causality" class="hover:underline" data-lang-cn="5.2 因果关系定性（六档划分）" data-lang-en="5.2 Causality Qualification (Six Tiers)">5.2 因果关系定性（六档划分）</a></li>
+                            <li><a href="#subsection-breakthrough" class="hover:underline" data-lang-cn="5.3 成果产出的突破性（六档划分）" data-lang-en="5.3 Breakthrough in Outcome Production (Six Tiers)">5.3 成果产出的突破性（六档划分）</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- 1. 研究贡献的量化：QIRC/QuIReC 的提出背景 -->
+        <section id="section-overview" class="card bg-white p-8 rounded-2xl border-l-4 border-primary">
+            <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="1. 研究贡献的量化：QIRC/QuIReC 的提出背景" data-lang-en="1. Quantifying Research Contribution: The Context of QIRC/QuIReC">1. 研究贡献的量化：QIRC/QuIReC 的提出背景</h2>
+            <div class="text-secondary space-y-4 leading-relaxed">
+                <p data-lang-cn="学术平均主义虽然在国际学术界并非主流，但其影响对中国等发展中国家的学术发展可能带来严重的危害。现有的学术规则并非不能对大集体合作进行评估（如屠呦呦的青蒿素案例），但量化难度较大。为解决这一挑战，本项目结合法学和金融学的原理，开发了一套研究贡献量化法（QIRC，后更名为 QuIReC），旨在通过定量计算，将传统的学术评估规则进行细化和应用。" data-lang-en="Although academic egalitarianism is not mainstream internationally, its influence poses serious threats to academic development in developing countries like China. Existing academic rules can evaluate large collective collaborations (e.g., Tu Youyou's artemisinin case), but quantification is difficult. To address this, this project combined principles from law and finance to develop the Quantitative Index of Research Contribution (QIRC, later QuIReC), aiming to refine and apply traditional academic evaluation rules through quantitative calculation."></p>
+                <p data-lang-cn="QuIReC 在 2025 年 7-10 月经过重要补充和完善，形成了现有的量化模型。" data-lang-en="QuIReC underwent significant updates and refinement between July and October 2025, resulting in the current quantitative model."></p>
+            </div>
+        </section>
+
+        <!-- 2. 夸大贡献的普遍性与量化的必要性 -->
+        <section id="section-exaggeration" class="card bg-white p-8 rounded-2xl">
+            <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="2. 夸大贡献的普遍性与量化的必要性" data-lang-en="2. Ubiquity of Contribution Exaggeration and the Need for Quantification">2. 夸大贡献的普遍性与量化的必要性</h2>
+            <div class="text-secondary space-y-4 leading-relaxed">
+                <p data-lang-cn="在金融学中，对贡献的计算（俗称定价）有成熟的方法。但学术领域目前的贡献度计算主要基于作者排序等**倒推**方式，缺乏基于原始资料的直接计算。这导致实践中贡献争议频发。" data-lang-en="In finance, there are mature methods for calculating contribution (often called pricing). However, current academic contribution calculation primarily relies on **reverse engineering** from author order, lacking direct calculation based on primary sources. This frequently leads to disputes over contribution in practice."></p>
+                <p data-lang-cn="研究表明，由于每个人对自身贡献的天然扭曲评估，当合作者数量增多（例如从 3 人增至 6 人）时，作者自我宣称的贡献率总和会从 205% 上升至 260% 甚至更高。这种高达 2-3 倍的偏差是导致纠纷难以调和的主要原因。" data-lang-en="Research shows that due to everyone's natural distorted assessment of their own contribution, the sum of authors' self-reported contributions increases from about 205% to 260% or more as the number of collaborators grows (e.g., from 3 to 6). This deviation, often reaching 2-3 times the actual contribution, is the main reason why disputes are hard to reconcile."></p>
+                <p data-lang-cn="QuIReC 旨在通过开发一套针对学术领域的研究贡献度计算方法，将传统的学术评估进行量化，从而有效避免纠纷、化解矛盾。" data-lang-en="QuIReC aims to avoid disputes and resolve conflicts by developing a quantitative method for academic contribution, formalizing traditional academic assessment."</p>
+            </div>
+        </section>
+
+        <!-- 3. 核对现有披露规则 -->
+        <section id="section-check-rules" class="card bg-white p-8 rounded-2xl border-l-4 border-secondary/50">
+            <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="3. 核对现有披露规则 (第一步骤)" data-lang-en="3. Checking Existing Disclosure Rules (Step 1)">3. 核对现有披露规则 (第一步骤)</h2>
+            <div class="text-secondary space-y-4 leading-relaxed">
+                <p data-lang-cn="研究贡献量化法（QIRC/QuIReC）不与现有的学术论文披露规则冲突。认定研究贡献有三个基本要件：" data-lang-en="The Quantitative Index of Research Contribution (QIRC/QuIReC) does not conflict with existing academic disclosure rules. There are three essential elements for determining research contribution:"></p>
+                <ol class="list-decimal list-inside space-y-1 pl-4">
+                    <li data-lang-cn="实施了有助于研究的行为；" data-lang-en="Action was taken that aided the research;"></li>
+                    <li data-lang-cn="促成了研究成果的产出；" data-lang-en="The action contributed to the research outcome;"></li>
+                    <li data-lang-cn="行为和成果之间存在因果关系。" data-lang-en="A causal link exists between the action and the outcome."></li>
+                </ol>
+                <p data-lang-cn="在计算贡献的第一步骤，必须核对该行为是否符合现有披露规则（包括对引文的要求）。不符合要求者，不应列入计算。" data-lang-en="In the first step of calculating contribution, the action must be verified against existing disclosure rules (including requirements for citations). If requirements are not met, the contribution should not be included in the calculation."></p>
+            </div>
+        </section>
+
+        <!-- 4. 合并现有贡献项目 -->
+        <section id="section-combine-items" class="card bg-white p-8 rounded-2xl">
+            <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="4. 合并现有贡献项目 (五大要素)" data-lang-en="4. Consolidating Existing Contribution Items (Five Major Factors)">4. 合并现有贡献项目 (五大要素)</h2>
+            <div class="text-secondary space-y-4 leading-relaxed">
+                <p data-lang-cn="基于 CRediT 的 14 种贡献项，QuIReC 将其进一步合并为五大核心要素，并纳入了致谢、资金来源和引文等其他披露项目。此合并旨在确保合并后的要素在同等稀缺条件下，其重要性大体是相等的。" data-lang-en="Based on the 14 CRediT contribution roles, QuIReC further consolidates them into five core factors, incorporating other disclosure items like Acknowledgments, Funding, and References. This consolidation aims to ensure that the merged factors have approximately equal importance under conditions of equal scarcity."></p>
+                <ul class="list-none space-y-3 pl-4">
+                    <li><strong class="text-blue-800" data-lang-cn="组织 (Organization):" data-lang-en="Organization:">组织 (Organization):</strong> <span data-lang-cn="包括数据管理、写作 - 初稿、写作 - 审阅和编辑、监督指导和项目管理。" data-lang-en="Includes Data Curation, Writing - Original Draft, Writing - Review & Editing, Supervision, and Project Administration."></span></li>
+                    <li><strong class="text-blue-800" data-lang-cn="技术 (Technology):" data-lang-en="Technology:">技术 (Technology):</strong> <span data-lang-cn="包括可视化、形式分析、确认、软件、调查研究（仅技术部分）和技术类引文（Technical References）。" data-lang-en="Includes Visualization, Formal analysis, Validation, Software, Investigation (technical aspects only), and Technical References."></span></li>
+                    <li><strong class="text-blue-800" data-lang-cn="劳动 (Labor):" data-lang-en="Labor:">劳动 (Labor):</strong> <span data-lang-cn="主要包含调查研究（Investigation）中大量的执行性工作。" data-lang-en="Primarily includes the substantial execution work within Investigation."></span></li>
+                    <li><strong class="text-blue-800" data-lang-cn="创新 (Innovation):" data-lang-en="Innovation:">创新 (Innovation):</strong> <span data-lang-cn="包括概念化（Conceptualization）、方法论（Methodology）和创新类引文（Innovation References）。" data-lang-en="Includes Conceptualization, Methodology, and Innovation References."></span></li>
+                    <li><strong class="text-blue-800" data-lang-cn="外部支持 (External Support):" data-lang-en="External Support:">外部支持 (External Support):</strong> <span data-lang-cn="包括资金获取（Funding Acquisition）和资金来源（Funding）。" data-lang-en="Includes Funding Acquisition and Funding."></span></li>
+                </ul>
+                <p class="pt-2 italic text-sm text-gray-500" data-lang-cn="注：所有的贡献项都被简化，只计算其主要性质。例如，劳动量差异大的贡献统一划入调查研究（Investigation）的计算范畴。" data-lang-en="Note: All contribution items are simplified to count only their primary nature. For instance, contributions with high variance in labor are uniformly classified under the calculation scope of Investigation."></p>
+            </div>
+        </section>
+        
+        <!-- 5. 原因力大小的判定 -->
+        <section id="section-causality-sizing" class="card bg-white p-8 rounded-2xl border-l-4 border-primary">
+            <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="5. 原因力大小的判定 (三因素考量)" data-lang-en="5. Determining the Magnitude of Causality (Three Factor Consideration)">5. 原因力大小的判定 (三因素考量)</h2>
+            <div class="text-secondary space-y-4 leading-relaxed">
+                <p data-lang-cn="QuIReC 仿照民法惯例，对原因力（贡献对成果的决定性程度）的判定主要考量三个因素：" data-lang-en="QuIReC follows civil law conventions, primarily considering three factors when determining the magnitude of causality (the decisive degree of contribution to the outcome):"></p>
+                <ol class="list-decimal list-inside space-y-1 pl-4 font-bold">
+                    <li data-lang-cn="因果关系的定性 (Causality Qualification)" data-lang-en="Causality Qualification"></li>
+                    <li data-lang-cn="研究贡献与成果产出的距离（突破性）(Breakthrough / Remoteness)" data-lang-en="Breakthrough / Remoteness of Contribution to Outcome"></li>
+                    <li data-lang-cn="稀缺性比较 (Scarcity Comparison)" data-lang-en="Scarcity Comparison"></li>
+                </ol>
+                <p data-lang-cn="在实践中，这三个因素不一定都有足够的证据进行考量，通常是根据现有证据进行选择性评估。" data-lang-en="In practice, there may not be sufficient evidence for all three factors, so the assessment is usually selective based on available evidence."></p>
+
+                <!-- 5.1 稀缺性定档与计算方式 -->
+                <h3 id="subsection-scarcity" class="text-xl font-bold text-blue-800 pt-6 border-t" data-lang-cn="5.1 稀缺性定档与计算方式" data-lang-en="5.1 Scarcity Tiering and Calculation Methods">5.1 稀缺性定档与计算方式</h3>
+                <p data-lang-cn="稀缺性衡量贡献的独特性和不可替代性，分为六档，采用对数方法分档，有平均主义的考量。稀缺性定档有两种主要方式：" data-lang-en="Scarcity measures the uniqueness and irreplaceability of the contribution, divided into six logarithmic tiers with egalitarian considerations. There are two main methods for tiering scarcity:"></p>
+                <ul class="list-disc list-inside space-y-1 pl-4">
+                    <li data-lang-cn="**基于基数法：** 确定相关基数（如同期相关研究结果数量），计算该项贡献的占比（例如 523 项目中疟疾研究的稀缺性分析）。" data-lang-en="**Base Number Method:** Determine the relevant base number (e.g., number of contemporary related research results) and calculate the proportion of the contribution."></li>
+                    <li data-lang-cn="**基于时间法：** 根据问题悬疑的时间长度来定档，例如解决悬疑一年以上的问题为第二档，二十年以上为第六档。" data-lang-en="**Time-Based Method:** Tiering based on the length of time the problem has remained unresolved (e.g., problems unresolved for over one year are Tier 2, over twenty years are Tier 6)."></li>
+                </ul>
+                <p data-lang-cn="如果一个贡献项有多个变量需要考虑，将相关变量根据档位作加权平均处理。**稀缺性六档划分（基于基数法，对数递减）**如下：" data-lang-en="If a contribution involves multiple variables, a weighted average is applied based on the tier levels. **The six scarcity tiers (Base Number Method, logarithmically decreasing)** are as follows:"></p>
+                <div class="mt-2 text-sm text-gray-700 space-y-1">
+                    <p data-lang-cn="**第一档：** 稀缺性 $\in (50\%, 100\%]$" data-lang-en="**Tier 1:** Scarcity $\in (50\%, 100\%]$"></p>
+                    <p data-lang-cn="**第二档：** 稀缺性 $\in (10\%, 50\%]$" data-lang-en="**Tier 2:** Scarcity $\in (10\%, 50\%]$"></p>
+                    <p data-lang-cn="**第三档：** 稀缺性 $\in (1\%, 10\%]$" data-lang-en="**Tier 3:** Scarcity $\in (1\%, 10\%]$"></p>
+                    <p data-lang-cn="**第四档：** 稀缺性 $\in (0.1\%, 1\%]$" data-lang-en="**Tier 4:** Scarcity $\in (0.1\%, 1\%]$"></p>
+                    <p data-lang-cn="**第五档：** 稀缺性 $\in (0.01\%, 0.1\%]$" data-lang-en="**Tier 5:** Scarcity $\in (0.01\%, 0.1\%]$"></p>
+                    <p data-lang-cn="**第六档：** 稀缺性 $\in (0, 0.01\%]$" data-lang-en="**Tier 6:** Scarcity $\in (0, 0.01\%]$"></p>
+                </div>
+
+                <!-- 5.2 因果关系定性 -->
+                <h3 id="subsection-causality" class="text-xl font-bold text-blue-800 pt-6 border-t" data-lang-cn="5.2 因果关系定性（六档划分）" data-lang-en="5.2 Causality Qualification (Six Tiers)">5.2 因果关系定性（六档划分）</h3>
+                <p data-lang-cn="因果关系定性分为六档，考量因素包括因果关系类型（推定、相当、必然）和作用方式（多因一果、一因一果）。" data-lang-en="Causality qualification is divided into six tiers, considering the type of causality (Presumption, Adequate, Necessary) and the mode of action (Multiple Causes, Single Cause)."></p>
+                <div class="mt-2 text-sm text-gray-700 space-y-1">
+                    <p data-lang-cn="**第一档 (最低):** 因果关系推定，多因一果。" data-lang-en="**Tier 1 (Lowest):** Presumption of Causality, Multiple Causes."></p>
+                    <p data-lang-cn="**第二档:** 因果关系推定，一因一果。" data-lang-en="**Tier 2:** Presumption of Causality, Single Cause."></p>
+                    <p data-lang-cn="**第三档:** 相当因果关系，多因一果（不可或缺性 + 显著增加可能性）。" data-lang-en="**Tier 3:** Adequate Causality, Multiple Causes (Indispensability + Significantly Increased Possibility)."></p>
+                    <p data-lang-cn="**第四档:** 相当因果关系，一因一果（满足第三档条件 + 不存在其他因果关系）。" data-lang-en="**Tier 4:** Adequate Causality, Single Cause (Tier 3 conditions + No other causal relationship)."></p>
+                    <p data-lang-cn="**第五档:** 必然因果关系，多因一果（不可或缺性 + 看起来有很大帮助 + 规律性转化）。" data-lang-en="**Tier 5:** Necessary Causality, Multiple Causes (Indispensability + Apparent High Utility + Regular Conversion)."></p>
+                    <p data-lang-cn="**第六档 (最高):** 必然因果关系，一因一果（满足第五档条件 + 不存在其他因果关系）。" data-lang-en="**Tier 6 (Highest):** Necessary Causality, Single Cause (Tier 5 conditions + No other causal relationship)."></p>
+                </div>
+
+                <!-- 5.3 成果产出的突破性 -->
+                <h3 id="subsection-breakthrough" class="text-xl font-bold text-blue-800 pt-6 border-t" data-lang-cn="5.3 成果产出的突破性（六档划分）" data-lang-en="5.3 Breakthrough in Outcome Production (Six Tiers)">5.3 成果产出的突破性（六档划分）</h3>
+                <p data-lang-cn="突破性（即研究贡献与成果产出的距离）主要基于相似度进行划分，其中相似度指的是实质核心相似。" data-lang-en="Breakthrough (or Remoteness) is mainly tiered based on similarity, where similarity refers to substantive core similarity."></p>
+                <div class="mt-2 text-sm text-gray-700 space-y-1">
+                    <p data-lang-cn="**第一档 (最低):** 方案/技术相似度在 80% 以上，且被广泛采纳。" data-lang-en="**Tier 1 (Lowest):** Solution/Technology similarity $\ge 80\%$, and widely adopted."></p>
+                    <p data-lang-cn="**第二档:** 方案/技术相似度在 $2/3$ 以上，且被广泛采纳。" data-lang-en="**Tier 2:** Solution/Technology similarity $\ge 2/3$, and widely adopted."></p>
+                    <p data-lang-cn="**第三档:** 方案/技术相似度在 $1/3$ 到 $2/3$ 之间，且被广泛采纳；或相似度 $\ge 2/3$ 但未被广泛采纳。" data-lang-en="**Tier 3:** Solution/Technology similarity between $1/3$ and $2/3$, and widely adopted; OR similarity $\ge 2/3$ but not widely adopted."></p>
+                    <p data-lang-cn="**第四档:** 相似度低于 $1/3$ 但有 $10\%$ 以上高度雷同报道，且被广泛采纳；或相似度在 $1/3$ 到 $2/3$ 之间但未被广泛采纳。" data-lang-en="**Tier 4:** Similarity $< 1/3$ but $\ge 10\%$ high resemblance, and widely adopted; OR similarity between $1/3$ and $2/3$ but not widely adopted."></p>
+                    <p data-lang-cn="**第五档:** 相似度低于 $10\%$，且被广泛采纳；或相似度低于 $1/3$ 但有 $10\%$ 以上高度雷同报道，但未被广泛采纳。" data-lang-en="**Tier 5:** Similarity $< 10\%$, and widely adopted; OR similarity $< 1/3$ but $\ge 10\%$ high resemblance, but not widely adopted."></p>
+                    <p data-lang-cn="**第六档 (最高):** 相似度低于 $10\%$，且未被广泛采纳。" data-lang-en="**Tier 6 (Highest):** Similarity $< 10\%$, and not widely adopted."></p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="mt-16 w-full max-w-5xl border-t pt-8 text-center text-secondary text-sm">
+        <p data-lang-cn="&copy; 2025 示例网站。保留所有权利。" data-lang-en="&copy; 2025 Example Website. All rights reserved.">&copy; 2025 示例网站。保留所有权利。</p>
+        <p class="mt-2" data-lang-cn="专为 Canvas Immersive 环境优化。" data-lang-en="Optimized for the Canvas Immersive Environment.">专为 Canvas Immersive 环境优化。</p>
+    </footer>
+
+    <!-- JavaScript for Language Toggle Logic and Nav Highlighting -->
+    <script>
+        let currentLang = 'cn';
+        
+        const updateText = (lang) => {
+            document.querySelectorAll('[data-lang-cn], [data-lang-en]').forEach(element => {
+                const cnText = element.getAttribute('data-lang-cn');
+                const enText = element.getAttribute('data-lang-en');
+
+                if (cnText && enText) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        if (element.placeholder) {
+                            element.placeholder = lang === 'cn' ? cnText : enText;
+                        }
+                    } else {
+                        element.textContent = lang === 'cn' ? cnText : enText;
+                    }
+                }
+            });
+
+            const langButton = document.getElementById('lang-button');
+            if (langButton) {
+                const buttonSpan = langButton.querySelector('span');
+                const cnLabel = buttonSpan.getAttribute('data-lang-cn') || "Switch to English";
+                const enLabel = buttonSpan.getAttribute('data-lang-en') || "切换至中文";
+                
+                buttonSpan.textContent = lang === 'cn' ? cnLabel : enLabel;
+            }
+
+            document.documentElement.lang = lang === 'cn' ? 'zh-CN' : 'en';
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'cn' ? 'en' : 'cn';
+            updateText(currentLang);
+        }
+
+        window.onload = () => {
+            const path = window.location.pathname.split('/').pop();
+            const links = {
+                'index.html': 'index.html',
+                'background.html': 'background.html',
+                'usage_guide.html': 'usage_guide.html',
+                'hierarchical_calculator.html': 'hierarchical_calculator.html'
+            };
+            
+            // Highlight the correct link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active', 'bg-primary-light', 'font-semibold');
+                link.classList.add('text-secondary', 'font-medium', 'hover:bg-gray-100');
+            });
+
+            const activeLink = document.querySelector(`a[href="${links[path] || 'usage_guide.html'}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active', 'bg-primary-light', 'font-semibold');
+                activeLink.classList.remove('text-secondary', 'font-medium', 'hover:bg-gray-100');
+            }
+            updateText(currentLang);
+        };
+    </script>
+</body>
+</html>
