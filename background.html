@@ -29,7 +29,6 @@
             font-weight: normal;
             font-style: normal;
         }
-        /* 确保公式容器高度可见 */
         .formula-container {
             min-height: 2.5em; /* 至少保证一行高度 */
         }
@@ -84,34 +83,19 @@
         <section id="table-of-contents" class="card bg-white p-6 rounded-2xl border-l-4 border-secondary/50">
             <h2 class="text-2xl font-extrabold text-secondary mb-4" data-lang-cn="目录" data-lang-en="Table of Contents">目录</h2>
             <nav class="text-blue-700 space-y-2">
-                <ul class="list-none p-0 space-y-1">
-                    <li><a href="#section-origin" class="hover:underline transition duration-100" data-lang-cn="1. 学术制度起源：罗马法与教会传统" data-lang-en="1. Origin of Academic System: Roman Law and Ecclesiastical Tradition">1. 学术制度起源：罗马法与教会传统</a></li>
-                    <li><a href="#section-challenge" class="hover:underline transition duration-100" data-lang-cn="2. 当代挑战：平均主义与工程式训练的冲突" data-lang-en="2. Contemporary Challenges: Conflict between Egalitarianism and Technical Training">2. 当代挑战：平均主义与工程式训练的冲突</a></li>
-                    <li><a href="#section-quirec" class="hover:underline transition duration-100" data-lang-cn="3. QuIReC 模型：基于 CRediT 的量化方法" data-lang-en="3. The QuIReC Model: CRediT-Based Quantification Solution">3. QuIReC 模型：基于 CRediT 的量化方法</a>
-                        <ul class="list-disc list-inside ml-6 mt-1 space-y-1 text-sm text-gray-600">
-                            <li><a href="#section-s2-principle" class="hover:underline" data-lang-cn="3.1 核心原理：S²自加权平均法" data-lang-en="3.1 Core Principle: S² Self-Weighted Average Method">3.1 核心原理：S²自加权平均法</a></li>
-                            <li><a href="#section-factors-detail" class="hover:underline" data-lang-cn="3.2 三大贡献因子详解" data-lang-en="3.2 Detailed Explanation of the Three Contribution Factors">3.2 三大贡献因子详解</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+                </nav>
         </section>
 
         <section id="section-origin" class="card bg-white p-8 rounded-2xl border-l-4 border-primary">
             <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="1. 学术制度起源：罗马法与教会传统" data-lang-en="1. Origin of Academic System: Roman Law and Ecclesiastical Tradition">1. 学术制度起源：罗马法与教会传统</h2>
             <div class="text-secondary space-y-4 leading-relaxed">
-                <p data-lang-cn="欧洲大学制度可追溯至古希腊和古罗马文明，其制度根基深受罗马法的影响。在罗马帝国转型为政教合一的国家后，神职人员逐渐取代了此前的法官角色，并兼任学者工作。这些神职人员通常熟读罗马法，并将法律与宗教结合发展出教法。因此，早期的学者往往具备深厚的法学背景，这构成了现代学术制度的**制度式训练 (Institutional Training)** 基础。" data-lang-en="The European university system traces its roots back to ancient Greek and Roman civilizations, with its institutional foundations heavily influenced by Roman Law. Following the Roman Empire's shift to a state combining politics and religion, the clergy gradually replaced the former role of judges and often served as scholars. These clergy were typically well-versed in Roman Law, integrating law and religion to develop canon law. Thus, early scholars often possessed a profound legal background, which formed the basis of **Institutional Training** in the modern academic system."></p>
-                <p data-lang-cn="这种传统保证了学术社群内部成员对规则和荣誉文化的尊重与理解，这种**荣誉文化的约束力**在数千年来维护了学术的公正性。" data-lang-en="This tradition ensured that members within the academic community respected and understood the rules and the culture of honor. This **constraining power of honor culture** maintained academic fairness for millennia."></p>
-            </div>
+                </div>
         </section>
 
         <section id="section-challenge" class="card bg-white p-8 rounded-2xl">
             <h2 class="text-3xl font-extrabold text-primary mb-4 border-b pb-2" data-lang-cn="2. 当代挑战：平均主义与工程式训练的冲突" data-lang-en="2. Contemporary Challenges: Conflict between Egalitarianism and Technical Training">2. 当代挑战：平均主义与工程式训练的冲突</h2>
             <div class="text-secondary space-y-4 leading-relaxed">
-                <p data-lang-cn="随着近几十年研究人员数量的急速扩张，出现了大量缺乏制度式训练、只接受**工程式训练 (Technical Training)** 的学者。他们虽然精通技术方法，但对学术共同体的制度根基缺乏了解，导致荣誉文化的约束力减弱。" data-lang-en="With the rapid expansion of researchers in recent decades, a large number of scholars have emerged who lack institutional training and have only received **Technical Training**. Although proficient in technical methods, they lack understanding of the institutional foundation of the academic community, leading to a weakening of the constraining power of the culture of honor."></p>
-                <p data-lang-cn="在这种背景下，学术界开始出现**学术平均主义**思潮，挑战传统的**代表作制度**（如爱因斯坦的相对论，屠呦呦的青蒿素）。平均主义倡导通过共同一作、字母排序甚至圆圈排列来淡化主要贡献者，认为现代科学成果越来越依赖大集体合作，应平均分配贡献。" data-lang-en="Against this backdrop, the trend of **Academic Egalitarianism** has emerged, challenging the traditional **Representative Works System** (e.g., Einstein's theory of relativity, Tu Youyou's artemisinin). Egalitarianism advocates for diluting the role of primary contributors through measures like co-first authorship, alphabetical order, or even circular listing, arguing that modern scientific outcomes increasingly rely on large collective collaboration and contributions should be equally distributed."></p>
-                <p data-lang-cn="然而，平均主义的致命缺陷在于：科学成果的合作并非总是平等的。除了极少数情况，大多数项目都有清晰的**领导和核心贡献**。平均分配贡献不仅不公正，也削弱了创造最大价值的主体动力。" data-lang-en="However, the fatal flaw of egalitarianism is that collaboration in scientific achievement is rarely equal. Except in rare cases, most projects involve clear **leadership and core contributions**. Equal allocation of contribution is not only unjust but also weakens the motivation of those who create the greatest value."></p>
-            </div>
+                </div>
         </section>
         
         <section id="section-quirec" class="card bg-white p-8 rounded-2xl border-l-4 border-primary">
@@ -145,8 +129,8 @@
 
     <script>
         let currentLang = 'cn';
-
-        // ... (语言切换逻辑不变) ...
+        
+        // --- 语言切换核心函数 ---
         const updateText = (lang) => {
             document.querySelectorAll('[data-lang-cn], [data-lang-en]').forEach(element => {
                 const cnText = element.getAttribute('data-lang-cn');
@@ -158,7 +142,7 @@
                             element.placeholder = lang === 'cn' ? cnText : enText;
                         }
                     } else {
-                        // 仅更新没有公式 ID 的元素，带 ID 的元素留给 KaTeX 处理
+                        // 仅更新没有公式 ID 的元素
                         if (!element.id || element.id.indexOf('-formula-') === -1) {
                             element.textContent = lang === 'cn' ? cnText : enText;
                         }
@@ -184,68 +168,75 @@
         }
         
         // ===========================================
-        // === KaTeX 核心渲染函数：DOMContentLoaded 触发 ===
+        // === 关键修复：使用 window.onload 确保所有脚本和元素加载完毕再渲染公式和设置页面 ===
         // ===========================================
-        document.addEventListener("DOMContentLoaded", function() {
-            // 确保 KaTeX 核心库已加载
-            if (typeof katex === 'undefined') {
-                // 如果 KaTeX 未定义，则说明脚本未加载，建议用户检查网络/安全设置
-                console.error("KaTeX core library failed to load.");
-                return;
+        window.addEventListener('load', function() {
+            
+            // 1. 页面基本设置和语言初始化 (使用 try-catch 保证不中断)
+            try {
+                const path = window.location.pathname.split('/').pop();
+                const links = {
+                    'index.html': 'index.html',
+                    'background.html': 'background.html',
+                    'usage_guide.html': 'usage_guide.html',
+                    'hierarchical_calculator.html': 'hierarchical_calculator.html'
+                };
+                
+                // Highlight the correct link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active', 'bg-primary-light', 'font-semibold');
+                    link.classList.add('text-secondary', 'font-medium', 'hover:bg-gray-100');
+                });
+
+                const activeLink = document.querySelector(`a[href=\"${links[path] || 'background.html'}\"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active', 'bg-primary-light', 'font-semibold');
+                    activeLink.classList.remove('text-secondary', 'font-medium', 'hover:bg-gray-100');
+                }
+                updateText(currentLang);
+            } catch(e) {
+                console.error("Page setup failed:", e);
             }
+            
+            // 2. KaTeX 渲染 (使用单独的 try-catch 保证页面其余部分可见)
+            try {
+                if (typeof katex === 'undefined') {
+                    console.error("KaTeX core library failed to load or is not defined.");
+                    return;
+                }
 
-            // --- 核心公式定义 ---
-            const formulas = {
-                'block-formula-1': '\\large S_{avg} = \\frac{\\sum S^2}{\\sum S}',
-                'inline-formula-1': 'S^2', 'inline-formula-1-en': 'S^2',
-                'inline-formula-2': 'S_p', 'inline-formula-2-en': 'S_p',
-                'inline-formula-3': '(S_p^2)', 'inline-formula-3-en': '(S_p^2)',
-                'inline-formula-4': 'S_{avg}', 'inline-formula-4-en': 'S_{avg}',
-                'inline-formula-5': 'S_p', 'inline-formula-5-en': 'S_p', // 您上次提到的公式部分
-                'inline-formula-6': 'S + C + B', 'inline-formula-6-en': 'S + C + B', // 您上次提到的公式部分
-            };
+                // --- 核心公式定义 ---
+                const formulas = {
+                    'block-formula-1': '\\large S_{avg} = \\frac{\\sum S^2}{\\sum S}',
+                    'inline-formula-1': 'S^2', 'inline-formula-1-en': 'S^2',
+                    'inline-formula-2': 'S_p', 'inline-formula-2-en': 'S_p',
+                    'inline-formula-3': '(S_p^2)', 'inline-formula-3-en': '(S_p^2)',
+                    'inline-formula-4': 'S_{avg}', 'inline-formula-4-en': 'S_{avg}',
+                    'inline-formula-5': 'S_p', 'inline-formula-5-en': 'S_p', 
+                    'inline-formula-6': 'S + C + B', 'inline-formula-6-en': 'S + C + B', 
+                };
 
-            // --- 渲染循环 ---
-            for (const id in formulas) {
-                const element = document.getElementById(id);
-                if (element) {
-                    try {
-                        // isDisplayMode: true 用于块级公式，false 用于行内公式
-                        const isDisplayMode = id.startsWith('block'); 
-                        
-                        katex.render(formulas[id], element, {
-                            displayMode: isDisplayMode,
-                            throwOnError: false // 不因错误中断
-                        });
-                    } catch (e) {
-                        console.error(`Error rendering KaTeX for ID ${id}:`, e);
-                        element.textContent = formulas[id]; // 渲染失败时显示 LaTeX 源码
+                // --- 渲染循环 ---
+                for (const id in formulas) {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        // 单独捕获每个渲染错误，避免中断整个脚本
+                        try {
+                            const isDisplayMode = id.startsWith('block'); 
+                            
+                            katex.render(formulas[id], element, {
+                                displayMode: isDisplayMode,
+                                throwOnError: false // 避免 KaTeX 渲染错误导致页面崩溃
+                            });
+                        } catch (e) {
+                            console.error(`Error rendering KaTeX for ID ${id}:`, e);
+                            element.textContent = formulas[id]; // 渲染失败时显示 LaTeX 源码
+                        }
                     }
                 }
+            } catch (e) {
+                console.error("KaTeX rendering block failed unexpectedly:", e);
             }
-
-            // ... (其余 window.onload 逻辑) ...
-            const path = window.location.pathname.split('/').pop();
-            const links = {
-                'index.html': 'index.html',
-                'background.html': 'background.html',
-                'usage_guide.html': 'usage_guide.html',
-                'hierarchical_calculator.html': 'hierarchical_calculator.html'
-            };
-            
-            // Highlight the correct link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active', 'bg-primary-light', 'font-semibold');
-                link.classList.add('text-secondary', 'font-medium', 'hover:bg-gray-100');
-            });
-
-            const activeLink = document.querySelector(`a[href=\"${links[path] || 'background.html'}\"]`);
-            if (activeLink) {
-                activeLink.classList.add('active', 'bg-primary-light', 'font-semibold');
-                activeLink.classList.remove('text-secondary', 'font-medium', 'hover:bg-gray-100');
-            }
-            updateText(currentLang);
-
         });
     </script>
 </body>
