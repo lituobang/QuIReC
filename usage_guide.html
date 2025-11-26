@@ -361,8 +361,8 @@
     </main>
 
     <script>
-        let currentLang = 'cn'; // 默认语言为中文
-
+        const storedLang = localStorage.getItem('qui-rec-lang');
+        let currentLang = storedLang || (document.documentElement.lang === 'zh-CN' ? 'cn' : 'en');
         const updateText = (lang) => {
             document.querySelectorAll('[data-lang-cn], [data-lang-en]').forEach(element => {
                 const cnText = element.getAttribute('data-lang-cn');
