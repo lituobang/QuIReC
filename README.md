@@ -1,7 +1,7 @@
 # QuIReC
-基于CRediT的研究贡献量化法（QuIReC)
+基于CROTs的研究贡献量化法（QuIReC)
 
-Quantitative Index of Research Contribution (QuIReC) based on CRediT 
+Quantitative Index of Research Contribution (QuIReC) based on CROTs 
 
 https://quirec.org/
 
