@@ -7,6 +7,6 @@ https://quirec.org/
 
 This website was made with the help of Google Gemini.
 
-如果您有任何建议，欢迎联系lituobang@hotmail.com
-If you have any suggestions, please do not hesitate to contact lituobang@hotmail.com
+如果您有任何建议，欢迎在评论区进行讨论或联系lituobang@hotmail.com。
+If you have any suggestions, welcome to discuss in the comments or contact lituobang@hotmail.com
 
